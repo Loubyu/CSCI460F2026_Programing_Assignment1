@@ -1,3 +1,15 @@
+######################################################
+
+#  Student Name: Lou Neal
+
+#  Course Code: CSCI 460 -- Fall 2026
+
+#  Assignment Due Date: 10/25/2026
+
+#  GitHub Link: https://github.com/Loubyu/CSCI460F2026_Programing_Assignment1
+
+######################################################
+
 import csv
 import pandas as pd
 from sklearn.model_selection import train_test_split
@@ -9,6 +21,7 @@ ConfusionMatrixDisplay,
 f1_score,
 classification_report,
 )
+import statistics
 
 df = pd.read_csv('bank-full.csv', sep=',',quoting=csv.QUOTE_NONE)
 df.columns = df.columns.str.strip('"')
@@ -42,8 +55,13 @@ for training_percentage in range(10, 100, 10):
         f1 = f1_score(predictions, y_test, average="weighted")
         accuracies.append(accuracy)
         f1_scores.append(f1)
+        print(f"Trial {trial + 1} for {training_percentage}% training data: Accuracy = {accuracy}, F1 = {f1}")
     
     average = sum(accuracies) / 10
     print("Average accuracy for", training_percentage, "% training data:", average)
     average_f1scores = sum(f1_scores) / 10
     print("Average F1 score for", training_percentage, "% training data:", average_f1scores)
+    accuracy_std = statistics.stdev(accuracies)
+    f1_std = statistics.stdev(f1_scores)
+    print("Standard deviation of accuracy for", training_percentage, "% training data:", accuracy_std)
+    print("Standard deviation of F1 score for", training_percentage, "% training data:", f1_std)
