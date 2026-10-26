@@ -1,3 +1,15 @@
+######################################################
+
+#  Student Name: Lou Neal  
+
+#  Course Code: CSCI 460 -- Fall 2026
+
+#  Assignment Due Date: 10/25/2026
+
+#  GitHub Link: https://github.com/Loubyu/CSCI460F2026_Programing_Assignment1
+
+######################################################
+
 import csv
 import statistics
 import pandas as pd
